@@ -114,18 +114,36 @@
         </div>
       </div>
     </div>
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
+    <script src="./bootstrap/bootstrap.min.js"></script>
+    <script src="./lib/form-serialize.js"></script>
+    <script src="./lib/axios.js"></script>
+    <script src="./js/common.js"></script>
    <script>
     //axios 基址
     axios.defaults.baseURL='http://ajax-api.itheima.net'
-    //登录API
-    function login(data) {
-      return axios.post('/login',data)
-    }
     //注册API
     function login(data) {
       return axios.post('/register',data)
     }
-
+    //封装toast
+    function toast(params) {
+      const dom=document.querySelector(params)
+      const toast=new bootstrap.Toast(dom)
+      toast.show()
+    }
+    toast('#liveToast')
    </script>
     </script>
   </body>
