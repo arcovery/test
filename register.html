@@ -114,11 +114,10 @@
         </div>
       </div>
     </div>
-  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div class="position-fixed top-0 start-50 pt-4" style="z-index: 999; transform: translateX(-50%)">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
       <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
@@ -133,17 +132,40 @@
    <script>
     //axios 基址
     axios.defaults.baseURL='http://ajax-api.itheima.net'
+    //响应拦截器
+    axios.interceptors.response.use(res => {
+      toast({
+        title:'注册失败',
+        body:res.data.message
+      })
+      setTimeout(() => {
+      location.href = './login.html'
+      }, 1000);
+    },err=>{
+
+      console.log(err.response.data.error);
+      toast({
+        title:'注册失败',
+        body:err.response.data.error
+      })
+    })
     //注册API
     function login(data) {
       return axios.post('/register',data)
     }
     //封装toast
-    function toast(params) {
-      const dom=document.querySelector(params)
-      const toast=new bootstrap.Toast(dom)
+    function toast(data) {
+      const dom=document.querySelector('#liveToast')
+     dom.querySelector('strong').innerText=data.title
+     dom.querySelector('.toast-body').innerText=data.body
+      const toast=new bootstrap.Toast(dom,{delay:1000})
       toast.show()
     }
-    toast('#liveToast')
+    //注册点击事件
+    document.querySelector('#btn-register').onclick= ()=>{
+      event.preventDefault()
+     login(new serialize(document.querySelector('form'),{hash:true}))
+    }
    </script>
     </script>
   </body>
