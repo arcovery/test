@@ -114,81 +114,19 @@
         </div>
       </div>
     </div>
-    <!-- toast -->
-    <div
-      class="position-fixed top-0 start-50 pt-4"
-      style="z-index: 999; transform: translateX(-50%)"
-    >
-      <div id="myToast" class="toast bg-rgba">
-        <div class="toast-body">提示消息</div>
-      </div>
-    </div>
-    <script src="./bootstrap/bootstrap.min.js"></script>
-    <script src="./lib/form-serialize.js"></script>
-    <script src="./lib/axios.js"></script>
-    <script src="./js/common.js"></script>
-    <script>
-      // 封装了一个轻提示的函数
-      function tip (str) {
-        // 在里面要实例化toast对象
-        const toastBox = document.querySelector('#myToast')
-        // 把传递过来的文字放到提示的文字里
-        toastBox.children[0].innerText = str
-        const toast = new bootstrap.Toast(toastBox, {
-          delay: 1000
-        })
-        // 显示
-        toast.show()
-      }
+   <script>
+    //axios 基址
+    axios.defaults.baseURL='http://ajax-api.itheima.net'
+    //登录API
+    function login(data) {
+      return axios.post('/login',data)
+    }
+    //注册API
+    function login(data) {
+      return axios.post('/register',data)
+    }
 
-      axios.defaults.baseURL = 'http://ajax-api.itheima.net'
-
-      // 找到输入框
-      const usernameInp = document.querySelector('#input-email')
-      // 找到密码框
-      const passwordInp = document.querySelector('#input-password')
-
-      // 找到注册按钮，给它绑定点击事件
-      document
-        .querySelector('#btn-register')
-        .addEventListener('click', async function () {
-          // 非空判断
-          if (usernameInp.value === '') {
-            return tip('请输入账号')
-          }
-          // 非空判断
-          if (passwordInp.value === '') {
-            return tip('请输入密码')
-          }
-
-          if (usernameInp.value.length < 2 || usernameInp.value.length > 30) {
-            return tip('账号必须是2-30位之间')
-          }
-          if (passwordInp.value.length < 6 || passwordInp.value.length > 30) {
-            return tip('密码必须是6-30位之间')
-          }
-
-          // 能来到这代表都输入合法，就可以发请求
-          try {
-            const res = await axios({
-              url: '/register',
-              method: 'post',
-              data: {
-                username: usernameInp.value,
-                password: passwordInp.value
-              }
-            })
-
-            tip('注册成功！')
-            setTimeout(() => {
-              // 成功后跳转到登录页
-              location.href = './login.html'
-            }, 1200)
-          } catch (err) {
-            // 服务器告诉我是什么结果，我就返回什么结果
-            tip(err.response.data.message)
-          }
-        })
+   </script>
     </script>
   </body>
 </html>
