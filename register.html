@@ -91,6 +91,7 @@
 		<script src="./lib/form-serialize.js"></script>
 		<script src="./lib/axios.js"></script>
 		<script src="./js/common.js"></script>
+		<!-- <script src="./js/API.js"></script> -->
 		<script>
 			//axios 基址
 			axios.defaults.baseURL = 'http://ajax-api.itheima.net'
@@ -123,7 +124,7 @@
 				dom.querySelector('strong').innerText = data.title
 				dom.querySelector('.toast-body').innerText = data.body
 				new bootstrap.Toast(dom, { delay: 1000 }).show()
-
+			
 			}
 			//注册点击事件
 			document.querySelector('#btn-register').onclick = () => {

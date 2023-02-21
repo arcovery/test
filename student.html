@@ -221,25 +221,25 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label class="input-group-label">年龄：</label>
-                  <input type="text" name="age" class="form-control" placeholder="请输入年龄" />
+                  <input type="number" name="age" class="form-control" placeholder="请输入年龄" />
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label class="input-group-label">组号：</label>
-                  <input type="text" name="group" class="form-control" placeholder="请输入1-8组号" />
+                  <input type="number" name="group" class="form-control" placeholder="请输入1-8组号" />
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label class="input-group-label">期望薪资：</label>
-                  <input type="text" name="hope_salary" class="form-control" placeholder="请输入期望薪资" />
+                  <input type="number" name="hope_salary" class="form-control" placeholder="请输入期望薪资" />
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label class="input-group-label">就业薪资：</label>
-                  <input type="text" name="salary" class="form-control" placeholder="请输入就业薪资" />
+                  <input type="number" name="salary" class="form-control" placeholder="请输入就业薪资" />
                 </div>
               </div>
               <div class="col-sm-12">
@@ -267,12 +267,25 @@
         </div>
       </div>
     </div>
+    <!-- toast -->
+		<div class="position-fixed top-0 start-50 pt-4" style="z-index: 99999; transform: translateX(-50%)">
+			<div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header">
+					<strong class="me-auto">Bootstrap</strong>
+					<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+				</div>
+				<div class="toast-body">Hello, world! This is a toast message.</div>
+			</div>
+		</div>
     <script src="./bootstrap/bootstrap.min.js"></script>
     <script src="./lib/axios.js"></script>
     <script src="./lib/form-serialize.js"></script>
     <script src="./js/common.js"></script>
+    <script src="./js/API.js"></script>
+    <script src="./js/student.js"></script>
+    <script src="./js/palce.js"></script>
     <script>
-      
+
     </script>
   </body>
 </html>
